@@ -1,0 +1,101 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myContactLabel">Create or edit a Contact</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!contact.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="contact.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_nif">Nif</label>
+            <input type="text" class="form-control" name="nif" id="field_nif"
+                [(ngModel)]="contact.nif" required/>
+            <div [hidden]="!(editForm.controls.nif?.dirty && editForm.controls.nif?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nif?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="contact.title" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="contact.address" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_postalCode4">Postal Code 4</label>
+            <input type="text" class="form-control" name="postalCode4" id="field_postalCode4"
+                [(ngModel)]="contact.postalCode4" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_postalCode3">Postal Code 3</label>
+            <input type="text" class="form-control" name="postalCode3" id="field_postalCode3"
+                [(ngModel)]="contact.postalCode3" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_activity">Activity</label>
+            <input type="text" class="form-control" name="activity" id="field_activity"
+                [(ngModel)]="contact.activity" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_cae">Cae</label>
+            <input type="text" class="form-control" name="cae" id="field_cae"
+                [(ngModel)]="contact.cae" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="contact.email" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                [(ngModel)]="contact.phone" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_website">Website</label>
+            <input type="text" class="form-control" name="website" id="field_website"
+                [(ngModel)]="contact.website" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_fax">Fax</label>
+            <input type="text" class="form-control" name="fax" id="field_fax"
+                [(ngModel)]="contact.fax" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_region">Region</label>
+            <input type="text" class="form-control" name="region" id="field_region"
+                [(ngModel)]="contact.region" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_county">County</label>
+            <input type="text" class="form-control" name="county" id="field_county"
+                [(ngModel)]="contact.county" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_parish">Parish</label>
+            <input type="text" class="form-control" name="parish" id="field_parish"
+                [(ngModel)]="contact.parish" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
